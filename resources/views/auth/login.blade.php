@@ -4,13 +4,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7 shadow row justify-content-center p-5 rounded">
-                <h2 class="text-center mt-1">Inicio de sesion</h2>
-                <form method="POST" action="{{ route('login') }}" class="col-md-8">
+                <h2 class="text-center mt-1">Inicio de sesión</h2>
+                <form method="POST" action="{{ route('login.post') }}" class="col-md-8">
                     @csrf
                     <div class="col-12">
                         <label for="email" class="">Email</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="col-12 mt-2">
                         <label for="password">Contraseña</label>
@@ -22,18 +27,10 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="col-12 mt-2">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                        {{ old('remember') ? 'checked' : '' }}>
 
-                        <label class="form-check-label" for="remember">
-                            Recordar contraseña
-                        </label>
-                    </div>
-
-                    <div class="col-">
+                    <div class="mt-3">
                         <button type="submit" class="btn btn-primary col-12">
-                            Iniciar sesion
+                            Iniciar sesión
                         </button>
                     </div>
 
@@ -45,6 +42,5 @@
             </div>
             </form>
         </div>
-    </div>
     </div>
 @endsection

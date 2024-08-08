@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\urls;
-use App\Http\Controllers\users;
+use App\Http\Controllers\UrlController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
-Route::get('/url/{shortUrl}', [urls::class, 'redirect'])->name('redirect');
+Route::get('/url/{shortUrl}', [UrlController::class, 'redirect'])->name('redirect');
 
-//USERS
-Route::get('/login', [users::class, 'show'])->name('redirect');
-Route::get('/register', [users::class, 'redirect'])->name('redirect');
+//rutas para manejo de usuarios
+Route::get('/login', [UserController::class, 'showLogin'])->name('login');
+Route::post('/login', [UserController::class, 'login'])->name('login.post');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/register', [UserController::class, 'showRegister'])->name('register');
+Route::post('/register', [UserController::class, 'registerUSer'])->name('register');
