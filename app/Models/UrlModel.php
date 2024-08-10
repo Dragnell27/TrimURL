@@ -12,6 +12,6 @@ class UrlModel extends Model
 
     protected $table = 'urls';
     protected $fillable = [
-        'original_url', 'short_url', 'user-id',
+        'original_url', 'short_url', 'user_id',
     ];
 }

@@ -8,8 +8,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/{shortUrl}', [UrlController::class, 'redirect'])->name('url.redirect');
-Route::post('/redirect', [UrlController::class, 'createUrl'])->name('url.create');
+Route::get('/url/{shortUrl}', [UrlController::class, 'redirect'])->name('url.redirect');
+Route::post('/shortCreate', [UrlController::class, 'createUrl'])->name('url.create');
 
 
 //rutas para manejo de usuarios
